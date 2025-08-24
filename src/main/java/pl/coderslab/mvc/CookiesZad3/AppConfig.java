@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "pl.coderslab.mvc.CookiesZad2")
+@ComponentScan(basePackages = "pl.coderslab.mvc.CookiesZad3")
 public class AppConfig implements WebMvcConfigurer {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
