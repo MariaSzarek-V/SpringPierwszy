@@ -18,6 +18,9 @@ public class Book {
     private int rating;
     private String description;
 
+    @ManyToOne
+    private Category category;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "books_authors",
@@ -46,6 +49,13 @@ public class Book {
     }
     public void setAuthor(List<Author> authors) {
         this.authors = authors;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    public Category getCategory() {
+        return category;
     }
 
     public int getRating() {
