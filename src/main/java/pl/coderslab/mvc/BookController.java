@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 public class BookController {
     private final BookDao bookDao;
@@ -28,11 +31,16 @@ public class BookController {
         Book book = new Book();
         book.setTitle("Thinking in Java");
 
-        Author author = new Author();
-        author.setFirstName("John");
-        author.setLastName("Smith");
-        authorDao.saveAuthor(author);
-        book.setAuthor(author);
+        Author author1 = new Author();
+        author1.setFirstName("John");
+        author1.setLastName("Smith");
+        Author author2 = new Author();
+        author2.setFirstName("Jane");
+        author2.setLastName("Doe");
+        List<Author> authors = Arrays.asList(author1, author2);
+        authorDao.saveAuthor(author1);
+        authorDao.saveAuthor(author2);
+        book.setAuthor(authors);
 
         book.setDescription("spoko");
         book.setRating(5);
@@ -68,4 +76,36 @@ public class BookController {
         bookDao.delete(book);
         return "deleted";
     }
+
+
+    @RequestMapping("/book/all")
+    @ResponseBody
+    public List<Book> getAllBooks() {
+        return bookDao.findAll();
+    }
+
+    @RequestMapping("/book/rating/{rating}")
+    @ResponseBody
+    public List<Book> getAllByRaiting(@PathVariable int rating) {
+        return bookDao.findAllByRating(rating);
+    }
+
+    @RequestMapping("/book/allwithpublisher")
+    @ResponseBody
+    public List<Book> getAllByPublisher() {
+        return bookDao.findAllWithPublisher();
+    }
+
+    @RequestMapping("/book/publisher/{publisherId}")
+    @ResponseBody
+    public List<Book> getAllByPublisher(@PathVariable Long publisherId) {
+        return bookDao.findAllWithSpecifiedPublisher(publisherId);
+    }
+
+    @RequestMapping("/book/author/{authorId}")
+    @ResponseBody
+    public List<Book> getAllByAuthor(@PathVariable Long authorId) {
+        return bookDao.findAllWithSpecifiedAuthor(authorId);
+    }
+
 }

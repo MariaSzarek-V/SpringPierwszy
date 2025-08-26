@@ -5,6 +5,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Transactional
 public class PublisherDao {
@@ -24,6 +26,10 @@ public class PublisherDao {
 
     public void delete(Publisher publisher) {
         entityManager.remove(publisher);
+    }
+
+    public List<Publisher> findAll() {
+        return entityManager.createQuery("select p from Publisher p", Publisher.class).getResultList();
     }
 
 

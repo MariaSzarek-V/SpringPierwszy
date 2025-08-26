@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 public class AuthorController {
     private final AuthorDao authorDao;
@@ -44,7 +46,13 @@ public class AuthorController {
     public String deleteAuthor(@PathVariable Long id) {
         Author author = authorDao.getById(id);
         authorDao.delete(author);
-        return "author deleted";
+        return "author delete";
+    }
+
+    @RequestMapping("/author/all")
+    @ResponseBody
+    public List<Author> getAllAuthors() {
+        return authorDao.findAll();
     }
 
 }

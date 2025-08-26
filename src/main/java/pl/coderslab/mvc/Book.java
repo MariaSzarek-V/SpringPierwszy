@@ -1,9 +1,11 @@
 package pl.coderslab.mvc;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,10 +17,15 @@ public class Book {
     private String title;
     private int rating;
     private String description;
-//    @ManyToMany
-//    private List<Author> authors;
-    @ManyToOne
-    private Author author;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "books_authors",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List<Author> authors = new ArrayList<>();
+
+    @JsonIgnore
     @ManyToOne
     private Publisher publisher;
 
@@ -34,11 +41,11 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
-    public Author getAuthor() {
-        return author;
+    public List<Author> getAuthors() {
+        return authors;
     }
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthor(List<Author> authors) {
+        this.authors = authors;
     }
 
     public int getRating() {

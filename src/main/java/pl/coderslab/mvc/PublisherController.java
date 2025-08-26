@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 public class PublisherController {
     private final PublisherDao publisherDao;
@@ -46,4 +48,11 @@ public class PublisherController {
         publisherDao.delete(publisher);
         return "deleted";
     }
+    @RequestMapping("/publisher/all")
+    @ResponseBody
+    public List<Publisher> getAll() {
+        return publisherDao.findAll();
+    }
+
+
 }
