@@ -1,0 +1,25 @@
+### GET request to example server
+GET http://localhost:8080/api/movies
+
+### POST request to add a new movie
+POST http://localhost:8080/api/movies
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Inception2",
+  "director" : {
+  "id": 1
+  }
+}
+
+### POST request to add a new director
+POST http://localhost:8080/api/directors
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Jacek",
+  "lastName": "Placek"
+}
+
