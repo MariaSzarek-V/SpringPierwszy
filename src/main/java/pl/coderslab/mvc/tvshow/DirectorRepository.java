@@ -1,4 +1,4 @@
-package pl.coderslab.mvc.movie;
+package pl.coderslab.mvc.tvshow;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package pl.coderslab.mvc.movie;
+package pl.coderslab.mvc.tvshow;
 
 
 import lombok.extern.slf4j.Slf4j;

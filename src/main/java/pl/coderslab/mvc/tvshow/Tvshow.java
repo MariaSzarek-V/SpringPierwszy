@@ -1,21 +1,23 @@
-package pl.coderslab.mvc.movie;
+package pl.coderslab.mvc.tvshow;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
+import lombok.*;
+import pl.coderslab.mvc.tvshow.Director;
 
 
 @Entity
 @Getter
 @Setter
 @ToString
-public class Movie {
+//@Builder
+@NoArgsConstructor
+
+public class Tvshow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    int releaseYear;
 
     @ManyToOne
     private Director director;

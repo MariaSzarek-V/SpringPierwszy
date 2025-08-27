@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.coderslab.mvc.movie.Tvshow;
 
 @Repository
-public interface MovieRepository extends JpaRepository<Tvshow, Long> {
+public interface TvshowRepository extends JpaRepository<Tvshow, Long> {
 }

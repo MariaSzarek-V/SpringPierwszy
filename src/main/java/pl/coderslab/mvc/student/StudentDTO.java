@@ -1,22 +1,21 @@
-package pl.coderslab.mvc.movie;
+package pl.coderslab.mvc.student;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@Entity
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@ToString
-public class Director {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class StudentDTO {
     private Long id;
     private String firstName;
     private String lastName;
-
+    private String indexNumber;
+    private double averageGrade;
 }
