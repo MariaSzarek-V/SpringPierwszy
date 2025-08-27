@@ -1,6 +1,8 @@
-package pl.coderslab.mvc.tvshow;
+package pl.coderslab.mvc.movie;
 
 import lombok.*;
+
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
